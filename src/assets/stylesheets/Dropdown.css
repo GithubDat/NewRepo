@@ -1,0 +1,48 @@
+ 
+    .docs-dropdown-example {
+      width: 100% !important;
+      /* height: 20% !important; */
+      max-width: 100%;
+    }
+      .ms-Dropdown-container {
+        margin-bottom: 0%;
+        width: 20% !important;
+        margin-left: 3%;
+        display: inline-block;
+    }
+
+    .button-container{
+      text-align: right !important;
+      margin: 23px 107px;
+    }
+    
+    .add-button,.clear-button{
+      width: 12%;
+      margin-left: 2%;
+      border-radius: 10px;
+      background-color: lightgrey;
+      border: 1px solid;
+      color: black;
+    }
+    
+    .reset-button{
+      margin-left: 2%;
+      border: 1px solid;
+      color: black;
+      background-color: white;
+      width: 11%;
+    }
+
+    .pagination-table{
+      border: 1px solid;
+      position: relative;
+      width: 66%;
+      margin-left: 8%;
+    }
+
+
+/* .ms-Dropdown-container {
+  margin-bottom: 0%;
+  width: 15% !important;
+  margin-left: 2%;
+}  */

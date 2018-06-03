@@ -1,0 +1,30 @@
+{
+  "name": "assignmentspapp",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.16.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-pagination-table": "^2.0.2",
+    "react-scripts": "1.1.4",
+    "@microsoft/load-themed-styles": "^1.7.13",
+    "es6-promise": "^4.1.0",
+    "immutability-helper": "^2.6.4",
+    "office-ui-fabric-react": ">=5.112.0 <6.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "master"
+  },
+  "author": "GithubDat",
+  "license": "ISC"
+}

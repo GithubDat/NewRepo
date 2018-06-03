@@ -1,0 +1,53 @@
+.ms-TextField-wrapper{
+    width: 45%;
+    display: flex;
+}
+
+.user-card-container{
+    width: 74%;
+    height: 46%;
+    margin: 3% 14%;
+}
+
+.user-form{
+    width: 100%
+}
+
+.accept-user-container{
+    display: flex;
+    margin: 0% 14%;
+    width: 98%;
+}
+
+.ms-TextField{
+    width: 62%;
+}
+
+.ms-DocumentCard{
+    display: initial;
+}
+
+.user-picture{
+    width: 100%;
+}
+
+.details{
+    display: flex;
+}
+
+.id{
+    margin-left: 3%;
+}
+
+.name{
+    margin-left: 60%
+}
+
+.userid__submit{
+    width: 12%;
+    margin-left: 2%;
+    border-radius: 10px;
+    background-color: lightgrey;
+    border: 1px solid;
+    color: black;
+  }
