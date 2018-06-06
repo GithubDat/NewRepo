@@ -6,7 +6,7 @@ import PaginationTable from '../components/PaginationTable';
 
 import '../assets/stylesheets/Dropdown.css';
 
-const tableHeader = ["Country", "State", "City", "Areas"];
+const tableHeader = ["Country      ", "State            ", "City           ", "Areas               "];
 
 let countriesOptions = [
   { key: "A", text: "India" },
@@ -67,7 +67,7 @@ class Selection extends (Component, BaseComponent) {
   }
 
   render() {
-    const { selectedItem, selectedItems, selectedItemCountry, selectedItemState, selectedItemCity } = this.state;
+    const { selectedItems, selectedItemCountry, selectedItemState, selectedItemCity } = this.state;
 
 
     return (
@@ -141,20 +141,20 @@ class Selection extends (Component, BaseComponent) {
     newSelected.nationalState = this.state.selectedState;
     newSelected.city = this.state.selectedCity;
     newSelected.areas = this.state.selectedAreas;
-    let tableStateRow = this.state.tableRow;;
+    let tableStateRow = this.state.tableRow;
     tableStateRow.push(newSelected);
     this.setState({ tableRow: tableStateRow });
   }
 
   _onReset = () => {
     let emptyItem = { key: null, text: null, itemType: null };
-    return this.setState({ selectedItemCountry: emptyItem, selectedItemState: emptyItem, selectedItemCity: emptyItem, selectedItems: [], selectedAreas: emptyItem });
+    return this.setState({ selectedItemCountry: emptyItem, selectedItemState: emptyItem, selectedItemCity: emptyItem, selectedItems: [], selectedAreas: [] });
   }
 
   _handleCountry = (item) => {
     console.log('here country updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });
-    this.setState({ selectedCountryItem: item });
+    this.setState({ selectedItemCountry: item });
 
     this.setState({ selectedCountry: item.text });
     var newArray = [];
@@ -163,14 +163,15 @@ class Selection extends (Component, BaseComponent) {
         newArray.push(allstate);
       }
     })
-    return this.setState({ filteredStates: newArray });
+    this.setState({selectedAreas: []});    
+    return this.setState({ filteredStates: newArray, selectedState: '', selectedCity: '' });
   }
 
   _handleState = (item) => {
     // this.setState({ selectedItem: item });
     console.log('here state updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });        
-    this.setState({ selectedStateItem: item });
+    this.setState({ selectedItemState: item });
     this.setState({ selectedState: item.text });
     var newArray = [];
     citiesOptions.map((city) => {
@@ -178,11 +179,12 @@ class Selection extends (Component, BaseComponent) {
         newArray.push(city);
       }
     })
-    return this.setState({ filteredCities: newArray });
+    this.setState({selectedAreas: []});
+    return this.setState({ filteredCities: newArray, selectedAreas: [], selectedCity: '' });
   }
 
   _handleCity = (item) => {
-    this.setState({ selectedCityItem: item });
+    this.setState({ selectedItemCity: item });
     console.log('here city updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });        
 
@@ -193,7 +195,7 @@ class Selection extends (Component, BaseComponent) {
         newArray.push(area);
       }
     })
-    return this.setState({ filteredAreas: newArray });
+    return this.setState({ filteredAreas: newArray, selectedAreas: [] });
   }
 
   onChangeMultiSelect = (item) => {
@@ -206,7 +208,7 @@ class Selection extends (Component, BaseComponent) {
     } else {
       // remove the option if it's unchecked
       const currIndex = updatedSelectedItem.indexOf(item.key);
-      const currentIndex = updatedSelectedItem.indexOf(item.key);
+      const currentIndex = updatedSelectedItem.indexOf(item.text);
 
       if (currIndex > -1) {
         updatedSelectedItem.splice(currIndex, 1);
@@ -214,7 +216,9 @@ class Selection extends (Component, BaseComponent) {
         updatedSelectedText.splice(currentIndex, 1);
       }
     }
-    console.log(updatedSelectedText);
+    console.log("USIT",updatedSelectedText);
+    
+    console.log("USI",updatedSelectedItem);
     this.setState({
       selectedItems: updatedSelectedItem, selectedAreas: updatedSelectedText
     });
