@@ -5,6 +5,7 @@ const PaginationTable = ({ tableHeader, data }) => {
     return (
         <div className="pagination-table">
             <TablePagination
+                className="react-pagination-table"
                 headers={tableHeader}
                 data={data}
                 columns="country.nationalState.city.areas"

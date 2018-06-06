@@ -137,26 +137,24 @@ class Selection extends (Component, BaseComponent) {
 
   _addTable = () => {
     var newSelected = {};
-    if (newArray === undefined) {
-      var newArray = [];
-    }
     newSelected.country = this.state.selectedCountry;
     newSelected.nationalState = this.state.selectedState;
     newSelected.city = this.state.selectedCity;
     newSelected.areas = this.state.selectedAreas;
-    console.log(newArray);
-    newArray.push(newSelected);
-    this.setState({ tableRow: newArray });
+    let tableStateRow = this.state.tableRow;;
+    tableStateRow.push(newSelected);
+    this.setState({ tableRow: tableStateRow });
   }
 
   _onReset = () => {
-    return this.setState({ selectedItemCountry: undefined, selectedItemState: undefined, selectedItemCity: undefined, selectedItems: [] });
+    let emptyItem = { key: null, text: null, itemType: null };
+    return this.setState({ selectedItemCountry: emptyItem, selectedItemState: emptyItem, selectedItemCity: emptyItem, selectedItems: [], selectedAreas: emptyItem });
   }
 
   _handleCountry = (item) => {
     console.log('here country updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });
-    this.setState({ selectedItem: item });
+    this.setState({ selectedCountryItem: item });
 
     this.setState({ selectedCountry: item.text });
     var newArray = [];
@@ -172,7 +170,7 @@ class Selection extends (Component, BaseComponent) {
     // this.setState({ selectedItem: item });
     console.log('here state updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });        
-    this.setState({ selectedItem: item });
+    this.setState({ selectedStateItem: item });
     this.setState({ selectedState: item.text });
     var newArray = [];
     citiesOptions.map((city) => {
@@ -184,7 +182,7 @@ class Selection extends (Component, BaseComponent) {
   }
 
   _handleCity = (item) => {
-    this.setState({ selectedItem: item });
+    this.setState({ selectedCityItem: item });
     console.log('here city updating...' + item.key + ' ' + item.text + ' ' + item.selected);
     // this.setState({ countryKey: item.key });        
 
@@ -200,7 +198,7 @@ class Selection extends (Component, BaseComponent) {
 
   onChangeMultiSelect = (item) => {
     const updatedSelectedItem = this.state.selectedItems ? this.copyArray(this.state.selectedItems) : [];
-    const updatedSelectedText = [];
+    const updatedSelectedText = this.state.selectedAreas ? this.copyArray(this.state.selectedAreas) : [];
     if (item.selected) {
       // add the option if it's checked
       updatedSelectedItem.push(item.key);
